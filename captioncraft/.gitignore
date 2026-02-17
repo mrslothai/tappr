@@ -1,0 +1,41 @@
+# Environment files (NEVER commit secrets!)
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Temp files
+/tmp/
+*.tmp
+
+# Docker
+*.tar
+
+# Test coverage
+coverage/
+.coverage
+htmlcov/

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - DEBUG=true
+      - ASSEMBLYAI_API_KEY=${ASSEMBLYAI_API_KEY}
+      - R2_ACCOUNT_ID=${R2_ACCOUNT_ID}
+      - R2_ACCESS_KEY_ID=${R2_ACCESS_KEY_ID}
+      - R2_SECRET_ACCESS_KEY=${R2_SECRET_ACCESS_KEY}
+      - R2_BUCKET_NAME=${R2_BUCKET_NAME:-captioncraft}
+      - R2_PUBLIC_URL=${R2_PUBLIC_URL}
+    volumes:
+      # Mount temp and output for easy access to processed files during dev
+      - ./temp:/app/temp
+      - ./output:/app/output
+    restart: unless-stopped

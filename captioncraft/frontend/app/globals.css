@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  
+  /* Font family mappings for caption preview */
+  --font-montserrat: var(--font-montserrat);
+  --font-poppins: var(--font-poppins);
+  --font-roboto: var(--font-roboto);
+  --font-bebas-neue: var(--font-bebas-neue);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(17 24 39);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(75 85 99);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(107 114 128);
+}
+
+/* Selection */
+::selection {
+  background: rgb(168 85 247 / 0.4);
+  color: white;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid rgb(168 85 247);
+  outline-offset: 2px;
+}
+
+/* Smooth animations */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Video player styles */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video::-webkit-media-controls-enclosure {
+  display: none !important;
+}
+
+/* Font family utilities for caption preview */
+.font-montserrat {
+  font-family: var(--font-montserrat), sans-serif;
+}
+
+.font-poppins {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+.font-inter {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.font-roboto {
+  font-family: var(--font-roboto), sans-serif;
+}
+
+.font-bebas-neue {
+  font-family: var(--font-bebas-neue), sans-serif;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(17, 24, 39, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+}

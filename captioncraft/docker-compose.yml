@@ -1,0 +1,115 @@
+# CaptionCraft - Local Development Environment
+# Usage: docker-compose up -d
+
+version: "3.8"
+
+services:
+  # ===========================================
+  # BACKEND - Python/FastAPI + FFmpeg
+  # ===========================================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: captioncraft-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - DEBUG=true
+      - R2_ACCOUNT_ID=${R2_ACCOUNT_ID}
+      - R2_ACCESS_KEY_ID=${R2_ACCESS_KEY_ID}
+      - R2_SECRET_ACCESS_KEY=${R2_SECRET_ACCESS_KEY}
+      - R2_BUCKET_NAME=${R2_BUCKET_NAME:-captioncraft}
+      - R2_PUBLIC_URL=${R2_PUBLIC_URL}
+      - ASSEMBLYAI_API_KEY=${ASSEMBLYAI_API_KEY}
+      - MAX_VIDEO_SIZE_MB=${MAX_VIDEO_SIZE_MB:-100}
+      - FILE_RETENTION_HOURS=${FILE_RETENTION_HOURS:-24}
+      - MOCK_TRANSCRIPTION=${MOCK_TRANSCRIPTION:-false}
+    volumes:
+      - ./backend:/app
+      - ./backend/fonts:/fonts
+      - captioncraft-temp:/tmp/captioncraft
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+  # ===========================================
+  # FRONTEND - Next.js
+  # ===========================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    container_name: captioncraft-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8080
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  # ===========================================
+  # OPTIONAL: Redis (for job queues)
+  # ===========================================
+  # Uncomment if you need background job processing
+  # 
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: captioncraft-redis
+  #   ports:
+  #     - "6379:6379"
+  #   volumes:
+  #     - redis-data:/data
+  #   healthcheck:
+  #     test: ["CMD", "redis-cli", "ping"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+  #   restart: unless-stopped
+
+  # ===========================================
+  # OPTIONAL: MinIO (local S3/R2 replacement)
+  # ===========================================
+  # Uncomment for fully local development without Cloudflare
+  #
+  # minio:
+  #   image: minio/minio:latest
+  #   container_name: captioncraft-minio
+  #   ports:
+  #     - "9000:9000"
+  #     - "9001:9001"
+  #   environment:
+  #     - MINIO_ROOT_USER=minioadmin
+  #     - MINIO_ROOT_PASSWORD=minioadmin
+  #   command: server /data --console-address ":9001"
+  #   volumes:
+  #     - minio-data:/data
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+  #     interval: 30s
+  #     timeout: 20s
+  #     retries: 3
+  #   restart: unless-stopped
+
+volumes:
+  captioncraft-temp:
+    driver: local
+  # redis-data:
+  #   driver: local
+  # minio-data:
+  #   driver: local
+
+networks:
+  default:
+    name: captioncraft-network

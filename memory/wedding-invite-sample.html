@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation - Rahul & Priya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .video-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        /* Scene 1: Opening */
+        .scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInOut 45s infinite;
+        }
+
+        .scene-1 {
+            animation-delay: 0s;
+        }
+
+        .scene-2 {
+            animation-delay: 10s;
+        }
+
+        .scene-3 {
+            animation-delay: 20s;
+        }
+
+        .scene-4 {
+            animation-delay: 30s;
+        }
+
+        @keyframes fadeInOut {
+            0%, 5% { opacity: 0; transform: scale(0.9); }
+            10%, 20% { opacity: 1; transform: scale(1); }
+            25%, 100% { opacity: 0; transform: scale(1.1); }
+        }
+
+        /* Typography */
+        .title {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            animation: slideUp 2s ease;
+        }
+
+        .names {
+            font-size: 5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #f5af19, #f12711);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            opacity: 0.9;
+            margin-top: 30px;
+        }
+
+        .date-venue {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .date {
+            font-size: 2rem;
+            color: #f5af19;
+            margin-bottom: 10px;
+        }
+
+        .venue {
+            font-size: 1.3rem;
+            opacity: 0.8;
+        }
+
+        /* Decorative elements */
+        .mandala {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border: 2px solid rgba(245, 175, 25, 0.3);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+
+        .mandala:nth-child(1) {
+            top: -100px;
+            right: -100px;
+        }
+
+        .mandala:nth-child(2) {
+            bottom: -100px;
+            left: -100px;
+            animation-direction: reverse;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Particles */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #f5af19;
+            border-radius: 50%;
+            animation: float 10s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(100vh) rotate(0deg); 
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateY(-100vh) rotate(720deg); 
+                opacity: 0;
+            }
+        }
+
+        /* Heart animation */
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2rem;
+            animation: heartFloat 8s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes heartFloat {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) scale(1); opacity: 0; }
+        }
+
+        /* Photo placeholder */
+        .photo-frame {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid #f5af19;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* CTA Button */
+        .cta-button {
+            margin-top: 50px;
+            padding: 15px 50px;
+            background: linear-gradient(135deg, #f5af19, #f12711);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .title { font-size: 2rem; }
+            .names { font-size: 3rem; }
+            .subtitle { font-size: 1rem; }
+            .photo-frame { width: 200px; height: 200px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <!-- Decorative mandalas -->
+        <div class="mandala"></div>
+        <div class="mandala"></div>
+
+        <!-- Floating particles -->
+        <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 30%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 50%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 70%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 90%; animation-delay: 8s;"></div>
+
+        <!-- Floating hearts -->
+        <div class="hearts">
+            <div class="heart" style="left: 10%; animation-delay: 0s;">💕</div>
+            <div class="heart" style="left: 30%; animation-delay: 3s;">💖</div>
+            <div class="heart" style="left: 50%; animation-delay: 6s;">💕</div>
+            <div class="heart" style="left: 70%; animation-delay: 1s;">💖</div>
+            <div class="heart" style="left: 90%; animation-delay: 4s;">💕</div>
+        </div>
+
+        <!-- Scene 1: Opening -->
+        <div class="scene scene-1">
+            <div class="title">Save the Date</div>
+            <div style="font-size: 4rem; margin: 30px 0;">💍</div>
+            <div class="subtitle">A New Chapter Begins</div>
+        </div>
+
+        <!-- Scene 2: Couple Names -->
+        <div class="scene scene-2">
+            <div class="subtitle">Together Forever</div>
+            <div class="names">Rahul & Priya</div>
+            <div style="font-size: 2rem; margin-top: 20px;">❤️</div>
+            <div class="subtitle">Invite you to celebrate their love</div>
+        </div>
+
+        <!-- Scene 3: Photo + Date -->
+        <div class="scene scene-3">
+            <div class="photo-frame">👰🤵</div>
+            <div class="date-venue">
+                <div class="date">📅 15th February 2025</div>
+                <div class="venue">
+                    📍 The Grand Ballroom, Hotel Taj<br>
+                    Mumbai, Maharashtra
+                </div>
+            </div>
+        </div>
+
+        <!-- Scene 4: CTA -->
+        <div class="scene scene-4">
+            <div class="title">You're Invited</div>
+            <div class="names">Join Us</div>
+            <div class="subtitle" style="margin-top: 30px;">
+                Bless us with your presence<br>
+                as we begin our forever
+            </div>
+            <button class="cta-button">RSVP Now</button>
+        </div>
+    </div>
+
+    <script>
+        // Add music note
+        // In real video, you'd add:
+        // - Background music: "Kesariya" or "Raataan Lambiyan"
+        // - Photo transitions (Ken Burns effect)
+        // - Smooth animations between scenes
+        
+        console.log('🎬 Wedding Invite Video Sample');
+        console.log('Duration: 45 seconds');
+        console.log('Style: Cinematic Romantic');
+        console.log('Replace emoji with actual couple photos');
+    </script>
+</body>
+</html>

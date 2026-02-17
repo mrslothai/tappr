@@ -1,0 +1,46 @@
+====================================
+        BOARDING PASS
+====================================
+
+PASSENGER NAME: RAJESH KUMAR
+
+FROM: DEL (Delhi)
+TO: BLR (Bangalore)
+
+FLIGHT: 6E 123
+DATE: 14 FEB 2026
+CARRIER: IndiGo
+
+SEAT: 12A
+CLASS: Economy
+
+GATE: D7
+BOARDING TIME: 14:30
+DEPARTURE: 15:00
+
+BOOKING REF: ABC123
+SEQ: 001
+
+====================================
+
+INSTRUCTIONS FOR TESTING:
+1. Copy the text above
+2. Create an image using any method:
+   - Screenshot this text
+   - Use an image editor
+   - Create in Word/Google Docs and screenshot
+   - Use an online text-to-image tool
+
+3. Upload to SmartPass
+4. OCR should extract:
+   - Name: RAJESH KUMAR
+   - Flight: 6E 123
+   - From: DEL
+   - To: BLR
+   - Seat: 12A
+   - Gate: D7
+   - Boarding Time: 14:30
+   - Date: 14 FEB 2026
+
+Note: Make the text as clear as possible
+for best OCR results!
