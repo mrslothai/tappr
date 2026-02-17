@@ -35,7 +35,7 @@ export default function Home() {
   if (!mounted) return null
 
   return (
-    <main className="min-h-screen bg-black overflow-hidden">
+    <main className="min-h-screen bg-black overflow-x-hidden">
       {/* Animated Background Blobs */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div 

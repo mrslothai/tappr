@@ -230,9 +230,9 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 overflow-x-hidden">
       {/* Header */}
-      <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10">
+      <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-10 overflow-x-hidden">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link href="/dashboard">
@@ -271,11 +271,11 @@ export default function DashboardPage() {
         </div>
       </header>
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="grid lg:grid-cols-2 gap-8">
+      <div className="container mx-auto px-4 py-8 max-w-full overflow-x-hidden">
+        <div className="grid lg:grid-cols-2 gap-4 md:gap-8">
           {/* Left: Editor */}
-          <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6">
+          <div className="space-y-4 md:space-y-6">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-4 md:p-6">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
                 Edit Profile
               </h2>
@@ -361,7 +361,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Links Section */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-4 md:p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                   Social Links
@@ -459,7 +459,7 @@ export default function DashboardPage() {
           {/* Right: Preview & QR */}
           <div className="space-y-6 lg:sticky lg:top-24 h-fit">
             {/* QR Code Card */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-4 md:p-6">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
                 Your QR Code
               </h2>
@@ -474,35 +474,38 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 mb-3">
-                <Button variant="secondary" size="sm" onClick={handleDownloadQR}>
-                  <Download className="w-4 h-4" />
+              <div className="flex flex-wrap gap-2 mb-3">
+                <Button variant="secondary" size="sm" onClick={handleDownloadQR} className="flex-1 min-w-[100px]">
+                  <Download className="w-4 h-4 mr-2" />
+                  <span className="hidden sm:inline">Download</span>
                 </Button>
-                <Button variant="secondary" size="sm" onClick={handleCopyLink}>
-                  <Copy className="w-4 h-4" />
+                <Button variant="secondary" size="sm" onClick={handleCopyLink} className="flex-1 min-w-[100px]">
+                  <Copy className="w-4 h-4 mr-2" />
+                  <span className="hidden sm:inline">Copy</span>
                 </Button>
               </div>
               
-              <div className="grid grid-cols-2 gap-3">
+              <div className="flex flex-wrap gap-2">
                 <button
                   onClick={handleWhatsAppShare}
-                  className="inline-flex items-center justify-center px-3 py-1.5 text-sm bg-[#25D366] hover:bg-[#1eab52] text-white rounded-lg font-medium transition-all duration-200"
+                  className="flex-1 min-w-[120px] inline-flex items-center justify-center px-3 py-1.5 text-sm bg-[#25D366] hover:bg-[#1eab52] text-white rounded-lg font-medium transition-all duration-200"
                 >
                   <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
                   </svg>
-                  Share
+                  <span className="hidden sm:inline">Share</span>
                 </button>
-                <a href="/dashboard/qr" target="_blank">
+                <a href="/dashboard/qr" target="_blank" className="flex-1 min-w-[100px]">
                   <Button variant="secondary" size="sm" className="w-full">
-                    <Maximize2 className="w-4 h-4" />
+                    <Maximize2 className="w-4 h-4 mr-2" />
+                    <span className="hidden sm:inline">Fullscreen</span>
                   </Button>
                 </a>
               </div>
             </div>
 
             {/* Live Preview */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-4 md:p-6">
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
                 Live Preview
               </h2>
