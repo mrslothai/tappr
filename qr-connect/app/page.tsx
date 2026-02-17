@@ -451,7 +451,7 @@ export default function Home() {
               <div className="inline-flex items-center gap-4 bg-white/5 backdrop-blur-xl border border-white/10 rounded-full p-1">
                 <button
                   onClick={() => setIsYearly(false)}
-                  className={`px-6 py-2 rounded-full transition-all ${
+                  className={`min-h-[44px] px-6 py-2 rounded-full transition-all ${
                     !isYearly ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white' : 'text-gray-400'
                   }`}
                 >
@@ -459,7 +459,7 @@ export default function Home() {
                 </button>
                 <button
                   onClick={() => setIsYearly(true)}
-                  className={`px-6 py-2 rounded-full transition-all ${
+                  className={`min-h-[44px] px-6 py-2 rounded-full transition-all ${
                     isYearly ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white' : 'text-gray-400'
                   }`}
                 >

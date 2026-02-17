@@ -20,7 +20,7 @@ export default function SaveContactButton({ profile, links }: { profile: Profile
     <div className="flex justify-center">
       <button
         onClick={handleSave}
-        className="flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-xl font-medium transition-all duration-200"
+        className="min-h-[44px] flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-xl font-medium transition-all duration-200"
       >
         <Download className="w-5 h-5" />
         Save Contact
