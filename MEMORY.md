@@ -23,12 +23,16 @@ _Last updated: 2026-02-13_
 - India-first strategy: UPI QR normalized, WhatsApp integration, undercuts Linktree pricing
 - Research report: `/Users/sloth/.openclaw/workspace-researcher/qr-networking-card-research-report.md` (23K words)
 
-### QR Connect Status
-- ✅ MVP built by Coder agent (Sloth fixed build errors Coder missed)
-- ✅ Deployed to Vercel
-- ❌ Supabase project not yet created (auth/data won't work without it)
-- ❌ UI quality review not yet completed
-- ❌ Tester agent hasn't validated flows yet
+### Tappr Status
+- ✅ MVP built, deployed, **tappr.in live with SSL**
+- ✅ Supabase connected (project `fmacbdrwkitpluetlbzy`)
+- ✅ Phase 1 monetization (Free/Pro tiers, pricing page, analytics paywall)
+- ✅ WhatsApp share feature (dashboard, profile, welcome page, tracking)
+- ✅ Mobile responsive landing page
+- ✅ GTM strategy delivered by Strategist agent
+- ❌ Avatars storage bucket not created yet (SQL sent to Rajesh)
+- ❌ Razorpay integration not yet built
+- ❌ Full QA pass not yet done
 
 ## 🤖 Team Sloth (Multi-Agent Setup)
 - **Sloth (main)**: Team lead, Opus 4.6, delegates & reviews
@@ -36,7 +40,7 @@ _Last updated: 2026-02-13_
 - **Creator**: Content specialist, Sonnet 4.5, workspace-creator/
 - **Researcher**: Research specialist, Sonnet 4.5, workspace-researcher/
 - **Strategist**: Business/growth specialist, Sonnet 4.5, workspace-strategist/
-- **Tester**: QA specialist, Haiku 4.5, workspace-tester/
+- **Tester**: QA specialist, Sonnet 4.5 (upgraded from Haiku 2026-02-17), workspace-tester/
 - Config: `~/.openclaw/openclaw.json` — all 6 agents registered
 
 ## 📐 Hard-Learned Lessons

@@ -78,6 +78,37 @@ DROP POLICY IF EXISTS "Profile owners can view their leads" ON lead_captures;
 CREATE POLICY "Profile owners can view their leads" ON lead_captures FOR SELECT USING (profile_id = auth.uid());
 
 -- Profile shares table (for tracking share analytics)
+-- Orders table for Cashfree payments
+CREATE TABLE IF NOT EXISTS orders (
+  id TEXT PRIMARY KEY,
+  user_id UUID REFERENCES profiles(id) ON DELETE CASCADE,
+  plan_id TEXT NOT NULL,
+  amount NUMERIC NOT NULL,
+  currency TEXT DEFAULT 'INR',
+  status TEXT DEFAULT 'created',
+  cashfree_order_id TEXT,
+  payment_session_id TEXT,
+  payment_id TEXT,
+  paid_at TIMESTAMPTZ,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE orders ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "Users can view own orders" ON orders;
+CREATE POLICY "Users can view own orders" ON orders FOR SELECT USING (user_id = auth.uid());
+
+-- Add user_id to subscriptions as unique for upsert
+ALTER TABLE subscriptions ADD COLUMN IF NOT EXISTS cashfree_order_id TEXT;
+ALTER TABLE subscriptions ADD COLUMN IF NOT EXISTS amount NUMERIC;
+
+-- Ensure user_id is unique on subscriptions for upsert
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'subscriptions_user_id_key') THEN
+    ALTER TABLE subscriptions ADD CONSTRAINT subscriptions_user_id_key UNIQUE (user_id);
+  END IF;
+END $$;
+
 CREATE TABLE IF NOT EXISTS profile_shares (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   profile_id UUID REFERENCES profiles(id) ON DELETE CASCADE,

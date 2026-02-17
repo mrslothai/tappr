@@ -57,28 +57,28 @@ export default function QRFullscreenPage() {
 
   return (
     <div
-      className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-8 cursor-pointer"
+      className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-4 md:p-8 cursor-pointer"
       onClick={() => router.back()}
     >
       {/* Close Button */}
       <button
-        className="min-h-[44px] min-w-[44px] absolute top-8 right-8 text-gray-400 hover:text-white transition-colors"
+        className="min-h-[44px] min-w-[44px] absolute top-4 right-4 md:top-8 md:right-8 text-gray-400 hover:text-white transition-colors"
         onClick={() => router.back()}
       >
         <X className="w-8 h-8" />
       </button>
 
       {/* Content */}
-      <div className="text-center animate-fade-in">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+      <div className="text-center animate-fade-in w-full max-w-md">
+        <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-2 md:mb-4">
           {profile?.display_name}
         </h1>
-        <p className="text-xl text-gray-400 mb-12">
+        <p className="text-base md:text-xl text-gray-400 mb-6 md:mb-12">
           Scan to connect with {profile?.display_name?.split(' ')[0]}
         </p>
 
         {/* QR Code */}
-        <div className="bg-white rounded-3xl p-8 shadow-2xl inline-block">
+        <div className="bg-white rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-2xl inline-block w-[75vw] max-w-[400px]">
           <BrandedQR value={profileUrl} size={400} />
         </div>
 

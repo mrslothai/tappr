@@ -82,35 +82,37 @@ export default function WelcomePage() {
     <div className="min-h-screen bg-gradient-to-br from-purple-500 via-primary-500 to-indigo-600 overflow-hidden relative">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-96 h-96 bg-white/10 rounded-full blur-3xl -top-48 -left-48 animate-pulse"></div>
-        <div className="absolute w-96 h-96 bg-white/10 rounded-full blur-3xl -bottom-48 -right-48 animate-pulse delay-1000"></div>
+        <div className="absolute w-48 h-48 md:w-96 md:h-96 bg-white/10 rounded-full blur-3xl -top-24 -left-24 md:-top-48 md:-left-48 animate-pulse"></div>
+        <div className="absolute w-48 h-48 md:w-96 md:h-96 bg-white/10 rounded-full blur-3xl -bottom-24 -right-24 md:-bottom-48 md:-right-48 animate-pulse delay-1000"></div>
       </div>
 
-      <div className="container mx-auto px-4 py-12 relative z-10">
+      <div className="container mx-auto px-4 py-8 md:py-12 relative z-10">
         <div className="max-w-2xl mx-auto">
           {/* Heading */}
-          <div className="text-center mb-12 animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
+          <div className="text-center mb-8 md:mb-12 animate-fade-in">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4">
               Your card is ready! 🎉
             </h1>
-            <p className="text-xl md:text-2xl text-white/90">
+            <p className="text-lg md:text-xl lg:text-2xl text-white/90">
               Share it with the world and start connecting
             </p>
           </div>
 
           {/* Card */}
-          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-8 md:p-12 mb-8 animate-scale-in">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl md:rounded-3xl shadow-2xl p-5 md:p-8 lg:p-12 mb-6 md:mb-8 animate-scale-in">
             {/* QR Code */}
-            <div className="flex justify-center mb-8 p-8 bg-gray-50 dark:bg-gray-900 rounded-2xl">
-              <BrandedQR
-                id="welcome-qr-code"
-                value={profileUrl}
-                size={256}
-              />
+            <div className="flex justify-center mb-6 md:mb-8 p-4 md:p-8 bg-gray-50 dark:bg-gray-900 rounded-xl md:rounded-2xl">
+              <div className="w-[180px] h-[180px] md:w-[256px] md:h-[256px]">
+                <BrandedQR
+                  id="welcome-qr-code"
+                  value={profileUrl}
+                  size={256}
+                />
+              </div>
             </div>
 
             {/* Profile URL */}
-            <div className="mb-8">
+            <div className="mb-6 md:mb-8">
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Your Profile URL
               </label>
@@ -119,7 +121,7 @@ export default function WelcomePage() {
                   type="text"
                   value={profileUrl}
                   readOnly
-                  className="flex-1 px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white font-mono text-sm"
+                  className="flex-1 min-w-0 px-3 md:px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white font-mono text-xs md:text-sm truncate"
                 />
               </div>
             </div>
