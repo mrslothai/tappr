@@ -24,6 +24,9 @@ python-dotenv==1.0.1
 pydantic==2.6.1
 pydantic-settings==2.1.0
 
+# Hinglish transliteration (offline, deterministic)
+indic-transliteration==2.3.62
+
 # Async support
 aiofiles==23.2.1
 
