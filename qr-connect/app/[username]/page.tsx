@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import PlatformIcon from '@/components/PlatformIcon'
 import { getSupabase, platformColors } from '@/lib/supabase'
-import SaveContactButton from './SaveContactButton'
+// import SaveContactButton from './SaveContactButton'
 import ProfileAvatar from './ProfileAvatar'
 import ScanTracker from './ScanTracker'
 import ShareButton from './ShareButton'
@@ -123,10 +123,6 @@ export default async function PublicProfilePage({
               ))}
             </div>
 
-            {/* Save Contact Button - only show if phone exists */}
-            {links.some((l: any) => l.platform === 'phone') && (
-              <SaveContactButton profile={profile} links={links} />
-            )}
           </div>
 
           {/* Branding - Only show for free users */}
