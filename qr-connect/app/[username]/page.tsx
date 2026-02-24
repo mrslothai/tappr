@@ -123,8 +123,10 @@ export default async function PublicProfilePage({
               ))}
             </div>
 
-            {/* Save Contact Button */}
-            <SaveContactButton profile={profile} links={links} />
+            {/* Save Contact Button - only show if phone exists */}
+            {links.some((l: any) => l.platform === 'phone') && (
+              <SaveContactButton profile={profile} links={links} />
+            )}
           </div>
 
           {/* Branding - Only show for free users */}
